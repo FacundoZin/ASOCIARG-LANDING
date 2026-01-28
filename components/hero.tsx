@@ -51,24 +51,28 @@ export function Hero() {
           </div>
 
           <div className="relative">
-            <div className="relative mx-auto aspect-video sm:aspect-[4/3] lg:aspect-[16/11] max-w-4xl overflow-hidden rounded-2xl border bg-slate-50 shadow-2xl">
-              {/* Browser Header Bar */}
-              <div className="flex items-center gap-1.5 border-b border-slate-800 bg-slate-900 px-4 py-3">
-                <div className="flex gap-1.5">
+            <div className="relative mx-auto w-full max-w-[280px] h-[580px] sm:max-w-4xl sm:h-[450px] lg:max-w-5xl lg:h-[520px] overflow-hidden rounded-[3rem] sm:rounded-2xl border-[8px] border-slate-900 sm:border bg-slate-50 shadow-2xl transition-all duration-300 ring-1 ring-slate-800/50">
+              {/* Mobile Hardware Details */}
+              <div className="absolute top-0 left-1/2 z-20 h-6 w-24 -translate-x-1/2 rounded-b-2xl bg-slate-900 sm:hidden" />
+              <div className="absolute bottom-1.5 left-1/2 z-20 h-1 w-20 -translate-x-1/2 rounded-full bg-slate-400/30 sm:hidden" /> 
+              
+              {/* Browser/System Bar */}
+              <div className="flex items-center gap-1.5 border-b border-slate-800 bg-slate-900 px-4 py-3 pt-6 sm:pt-3">
+                <div className="hidden sm:flex gap-1.5">
                   <div className="h-3 w-3 rounded-full bg-red-400" />
                   <div className="h-3 w-3 rounded-full bg-amber-400" />
                   <div className="h-3 w-3 rounded-full bg-emerald-400" />
                 </div>
-                <div className="ml-4 flex h-6 w-full max-w-md items-center rounded-md bg-slate-800 px-3 text-[10px] text-slate-300/80">
+                <div className="flex h-5 sm:h-6 w-full max-w-[200px] sm:max-w-md items-center rounded-md bg-slate-800 px-2 sm:px-3 text-[8px] sm:text-[10px] text-slate-300/80 truncate mx-auto sm:ml-4">
                   tuasociacion.com/dashboard
                 </div>
               </div>
 
               {/* System Content Mock */}
-              <div className="flex h-[calc(100%-44px)] flex-col overflow-hidden bg-slate-50">
-                <div className="flex-1 overflow-auto p-4 text-[10px] sm:text-[11px] custom-scrollbar">
+              <div className="flex h-[calc(100%-44px)] flex-col overflow-hidden bg-slate-50 sm:rounded-none rounded-b-[2.5rem]">
+                <div className="flex-1 overflow-auto p-3 sm:p-4 text-[10px] sm:text-[11px] custom-scrollbar">
                   {/* System Header */}
-                  <div className="mb-6 flex items-center justify-between rounded-lg bg-white p-3 shadow-sm">
+                  <div className="mb-4 sm:mb-6 flex items-center justify-between rounded-lg bg-white p-2.5 sm:p-3 shadow-sm">
                     <div className="flex items-center gap-3">
                       <div className="flex h-10 w-10 items-center justify-center rounded bg-blue-600 text-white">
                         <LayoutDashboard className="h-6 w-6" />
@@ -90,7 +94,7 @@ export function Hero() {
                   </div>
 
                   {/* Breadcrumbs */}
-                  <div className="mb-4 flex items-center gap-1 text-[9px] text-slate-400">
+                  <div className="mb-3 sm:mb-4 flex items-center gap-1 text-[9px] text-slate-400">
                     <Home className="h-3 w-3" />
                     <span>Inicio</span>
                     <ChevronRight className="h-2 w-2" />
@@ -98,28 +102,31 @@ export function Hero() {
                   </div>
 
                   {/* Welcome Message */}
-                  <div className="mb-6">
-                    <h2 className="text-xl font-bold text-slate-800">Bienvenido de nuevo</h2>
+                  <div className="mb-4 sm:mb-6">
+                    <h2 className="text-lg sm:text-xl font-bold text-slate-800 leading-tight">Bienvenido de nuevo</h2>
                     <p className="text-slate-500">Seleccione un módulo para gestionar las operaciones del club.</p>
                   </div>
 
                   {/* Modules Grid */}
-                  <div className="grid grid-cols-2 lg:grid-cols-3 gap-3">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-3">
                     {[
                       { title: "Gestión Socios", desc: "Administración completa del padrón de socios.", icon: Users, color: "text-blue-500", bg: "bg-blue-50" },
                       { title: "Gestión Reservas", desc: "Control de calendario y disponibilidad de espacios.", icon: Calendar, color: "text-purple-500", bg: "bg-purple-50" },
-                      { title: "Alquiler de artículos", desc: "Préstamo y devolución de inventario.", icon: Package, color: "text-cyan-500", bg: "bg-cyan-50" },
-                      { title: "Módulo para cobradores", desc: "Manejo de cobranzas desde un solo lugar.", icon: Wallet, color: "text-teal-500", bg: "bg-teal-50" },
-                      { title: "Gestión de viajes", desc: "Organización de excursiones y turismo.", icon: Map, color: "text-emerald-500", bg: "bg-emerald-50" },
+                      { title: "Alquiler salones", desc: "Gestión de solicitudes y cobros de espacios.", icon: Home, color: "text-emerald-500", bg: "bg-emerald-50" },
+                      { title: "Control Cobranzas", desc: "Manejo de cobranzas desde un solo lugar.", icon: Wallet, color: "text-teal-500", bg: "bg-teal-50" },
+                      { title: "Gestión de viajes", desc: "Organización de excursiones y turismo.", icon: Map, color: "text-indigo-500", bg: "bg-indigo-50" },
                       { title: "Registrar pago", desc: "Ingreso rápido de cuotas y movimientos.", icon: DollarSign, color: "text-green-500", bg: "bg-green-50" },
+                      { title: "Balances", desc: "Reportes económicos detallados.", icon: Package, color: "text-amber-500", bg: "bg-amber-50" },
+                      { title: "Notificaciones", desc: "Avisos automáticos por WhatsApp.", icon: RefreshCw, color: "text-rose-500", bg: "bg-rose-50" },
+                      { title: "Configuración", desc: "Ajustes generales del sistema.", icon: LayoutDashboard, color: "text-slate-500", bg: "bg-slate-50" },
                     ].map((module, i) => (
-                      <div key={i} className="group relative flex flex-col items-start gap-2 rounded-xl border border-white bg-white/60 p-3 shadow-sm transition-all hover:bg-white hover:shadow-md">
+                      <div key={i} className="group relative flex flex-col items-start gap-1.5 sm:gap-2 rounded-xl border border-white bg-white/60 p-2.5 sm:p-3 shadow-sm transition-all hover:bg-white hover:shadow-md">
                         <div className={`flex h-8 w-8 items-center justify-center rounded-lg ${module.bg} ${module.color}`}>
-                          <module.icon className="h-4 w-4" />
+                          <module.icon className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
                         </div>
                         <div>
                           <h4 className="font-semibold text-slate-800">{module.title}</h4>
-                          <p className="text-[8px] text-slate-500 max-w-[120px]">{module.desc}</p>
+                          <p className="text-[7.5px] sm:text-[8px] text-slate-500 max-w-[120px]">{module.desc}</p>
                         </div>
                         <ChevronRight className="absolute right-3 top-1/2 h-3 w-3 -translate-y-1/2 text-slate-300 transition-colors group-hover:text-slate-500" />
                       </div>

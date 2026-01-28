@@ -24,6 +24,7 @@ const features = [
     description:
       "Administracion completa del padron de socios, con historial detallado de pagos. podrá cargar, editar y eliminar socios desde un solo lugar.",
     color: "bg-blue-500/10 text-blue-600 dark:bg-blue-500/20 dark:text-blue-400 group-hover:bg-blue-500 group-hover:text-white",
+    popular: false,
   },
   {
     icon: CalendarDays,
@@ -31,6 +32,7 @@ const features = [
     description:
       "Registre reservas, pagos y señas de sus salones, visualize las fechas reservadas en un calendario inteligente, seguimiento completo y organizado de sus reservas.",
     color: "bg-cyan-500/10 text-cyan-600 dark:bg-cyan-500/20 dark:text-cyan-400 group-hover:bg-cyan-500 group-hover:text-white",
+    popular: true,
   },
   {
     icon: Wallet,
@@ -38,6 +40,7 @@ const features = [
     description:
       "Organize a sus cobradores asignandole lotes y zonas geograficas, mantenga un historial de todos los pagos recibidos de cada uno de ellos para auditorias internas.",
     color: "bg-emerald-500/10 text-emerald-600 dark:bg-emerald-500/20 dark:text-emerald-400 group-hover:bg-emerald-500 group-hover:text-white",
+    popular: true,
   },
   {
     icon: Bus,
@@ -52,6 +55,7 @@ const features = [
     description:
       "Envio automatico de links de pago a sus socios para que puedan abonar sus cuotas de forma online, con generacion de recibos y acreditacion en la cuenta de mercadopago de su asociacion.",
     color: "bg-amber-500/10 text-amber-600 dark:bg-amber-500/20 dark:text-amber-400 group-hover:bg-amber-500 group-hover:text-white",
+    popular: true,
   },
   {
     icon: Package,
@@ -97,6 +101,19 @@ function FeatureCard({ feature }: { feature: typeof features[0] }) {
       <Card
         className="group relative overflow-hidden transition-all duration-300 hover:shadow-lg bg-background border border-border/50 h-full"
       >
+        {"popular" in feature && feature.popular && (
+          <div className="absolute right-0 top-0 z-10">
+            <div className="flex items-center gap-1.5 bg-emerald-500/10 px-3 py-1 rounded-bl-xl border-b border-l border-emerald-500/20">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+              </span>
+              <span className="text-[10px] font-bold uppercase tracking-widest text-emerald-600 dark:text-emerald-400">
+                Más Popular
+              </span>
+            </div>
+          </div>
+        )}
         <CardContent className="flex items-start gap-4 p-5">
           <motion.div
             layout="position"
