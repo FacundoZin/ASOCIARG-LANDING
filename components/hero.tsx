@@ -32,15 +32,14 @@ export function Hero() {
 
             <div className="flex flex-col gap-4 max-w-xl text-pretty text-lg leading-relaxed text-muted-foreground">
               <p>
-                Gestión completa del padrón de socios, control de cobranzas y pagos online, notificaciones automáticas por WhatsApp, balances generales y administración de alquileres de salones.
-                Todo esto y mucho más integrado en una sola plataforma, diseñada para simplificar la administración de Asociaciones Civiles.
+                Socios, cobranzas, pagos online, alquileres, notificaciones automáticas y balances claros, todo esto y mucho más, pensado para asociaciones civiles que quieren ordenar su gestión sin complicarse.
               </p>
             </div>
 
             <div className="flex flex-col gap-4 pt-4 sm:flex-row">
               <Button asChild size="lg" className="gap-2">
                 <Link href="#contacto">
-                  Comenzar ahora
+                  Solicitar cotización
                   <ArrowRight className="h-4 w-4" />
                 </Link>
               </Button>
@@ -69,8 +68,21 @@ export function Hero() {
               </div>
 
               {/* System Content Mock */}
-              <div className="flex h-[calc(100%-44px)] flex-col overflow-hidden bg-slate-50 sm:rounded-none rounded-b-[2.5rem]">
-                <div className="flex-1 overflow-auto p-3 sm:p-4 text-[10px] sm:text-[11px] custom-scrollbar">
+              <div className="flex h-[calc(100%-44px)] flex-col overflow-hidden bg-slate-50 sm:rounded-none rounded-b-[2.5rem] relative">
+                {/* Ultra-Light Dark Glass Preview Badge */}
+                <div className="absolute bottom-10 left-1/2 -translate-x-1/2 sm:bottom-5 sm:left-auto sm:right-5 sm:translate-x-0 z-40 pointer-events-none w-fit">
+                  <div className="flex items-center gap-1.5 sm:gap-2.5 rounded-full sm:rounded-xl border border-slate-900/[0.05] bg-slate-900/[0.03] px-3 py-1 sm:px-4 sm:py-2 shadow-[inset_0_1px_1px_rgba(255,255,255,0.2),0_4px_12px_rgba(0,0,0,0.02)] backdrop-blur-2xl transition-all whitespace-nowrap">
+                    <div className="relative flex h-1.5 w-1.5 sm:h-2 sm:w-2">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500/40 opacity-75"></span>
+                      <span className="relative inline-flex rounded-full h-1.5 w-1.5 sm:h-2 sm:w-2 bg-emerald-500/80 shadow-[0_0_8px_rgba(16,185,129,0.4)]"></span>
+                    </div>
+                    <span className="text-[8px] sm:text-[10px] font-bold text-slate-500/60 uppercase tracking-[0.15em] sm:tracking-[0.25em]">
+                      Vista Previa del sistema
+                    </span>
+                  </div>
+                </div>
+
+                <div className="flex-1 overflow-auto p-3 sm:p-4 text-[10px] sm:text-[11px] custom-scrollbar relative z-10">
                   {/* System Header */}
                   <div className="mb-4 sm:mb-6 flex items-center justify-between rounded-lg bg-white p-2.5 sm:p-3 shadow-sm">
                     <div className="flex items-center gap-3">
@@ -78,7 +90,7 @@ export function Hero() {
                         <LayoutDashboard className="h-6 w-6" />
                       </div>
                       <div>
-                        <h3 className="font-bold text-slate-800 leading-tight">Sistema Club Abuelos</h3>
+                        <h3 className="font-bold text-slate-800 leading-tight">Asociación Civil Casa del Jubilado</h3>
                         <p className="text-[8px] text-slate-500 uppercase tracking-wider">Panel de Administración</p>
                       </div>
                     </div>
@@ -104,7 +116,7 @@ export function Hero() {
                   {/* Welcome Message */}
                   <div className="mb-4 sm:mb-6">
                     <h2 className="text-lg sm:text-xl font-bold text-slate-800 leading-tight">Bienvenido de nuevo</h2>
-                    <p className="text-slate-500">Seleccione un módulo para gestionar las operaciones del club.</p>
+                    <p className="text-slate-500">Seleccione un módulo para gestionar las operaciones de su asociación.</p>
                   </div>
 
                   {/* Modules Grid */}
@@ -136,7 +148,7 @@ export function Hero() {
                   {/* System Footer (Inside Mock) */}
                   <div className="mt-8 flex items-center justify-between border-t pt-4 text-[8px] text-slate-400">
                     <div className="flex items-center gap-4">
-                      <span>© 2026 Sistema Club Abuelos</span>
+                      <span>© 2026 Asociación Civil Casa del Jubilado</span>
                       <span className="hidden sm:inline">Versión 2.0.0 - Enterprise Edition</span>
                     </div>
                     <div className="flex gap-3">
