@@ -50,8 +50,9 @@ export function Integrations() {
                   >
                     <img 
                       src={integration.icon} 
-                      alt={integration.title} 
+                      alt={`Icono de ${integration.title} - integración con ASOCIARG`} 
                       className="h-full w-full object-contain"
+                      loading="lazy"
                     />
                   </div>
                   <div>
@@ -152,7 +153,7 @@ export function Integrations() {
                           <div className="flex items-center gap-4">
                             <div className="h-4 w-4 rounded-full border-2 border-slate-200 group-hover:border-blue-500 bg-white" />
                             <div className="h-9 w-9 bg-[#FFDB00] rounded-full flex items-center justify-center overflow-hidden border border-slate-100">
-                               <img src="/MP_RGB_HANDSHAKE_color_vertical.svg" className="scale-110 h-6" alt="MP" />
+                               <img src="/MP_RGB_HANDSHAKE_color_vertical.svg" className="scale-110 h-6" alt="Logo de Mercado Pago - medio de pago integrado para cobrar cuotas online" loading="lazy" />
                             </div>
                             <div>
                                <p className="text-sm font-bold text-slate-700 leading-none">Mercado Pago</p>
@@ -184,7 +185,7 @@ export function Integrations() {
                      
                      <div className="flex-1 w-full flex items-center gap-3 justify-center px-4 py-2.5 bg-green-50 border border-green-100 rounded-xl">
                         <div className="relative shrink-0">
-                          <img src="/whatsapp-3.svg" className="h-4 w-4" alt="WA" />
+                          <img src="/whatsapp-3.svg" className="h-4 w-4" alt="Icono de WhatsApp - envío automático de comprobantes de pago" loading="lazy" />
                           <div className="absolute -top-1 -right-1 h-2 w-2 bg-green-500 rounded-full animate-ping" />
                         </div>
                         <span className="text-[10px] font-semibold text-green-700 leading-tight">Comprobante por WhatsApp</span>

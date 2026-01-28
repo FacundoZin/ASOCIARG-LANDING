@@ -22,7 +22,7 @@ const features = [
     icon: Users,
     title: "Modulo Para Gestion de Socios",
     description:
-      "Administracion completa del padron de socios, con historial detallado de pagos. podrá cargar, editar y eliminar socios desde un solo lugar.",
+      "Administración completa del padrón de socios, con historial detallado de pagos. Podrá cargar, editar y eliminar socios desde un solo lugar.",
     color: "bg-blue-500/10 text-blue-600 dark:bg-blue-500/20 dark:text-blue-400 group-hover:bg-blue-500 group-hover:text-white",
     popular: false,
   },
@@ -46,14 +46,14 @@ const features = [
     icon: Bus,
     title: "Modulo Para Organizacion de Viajes",
     description:
-      "Organizacion integral de excursiones, turismo y eventos especiales para los asociados.",
+      "Organización integral de excursiones, turismo y eventos especiales para los asociados.",
     color: "bg-green-500/10 text-green-600 dark:bg-green-500/20 dark:text-green-400 group-hover:bg-green-500 group-hover:text-white",
   },
   {
     icon: CreditCard,
     title: "Portal de Pagos Online",
     description:
-      "Envio automatico de links de pago a sus socios para que puedan abonar sus cuotas de forma online, con generacion de recibos y acreditacion en la cuenta de mercadopago de su asociacion.",
+      "Envío automático de links de pago a sus socios para que puedan abonar sus cuotas de forma online, con generación de recibos y acreditación en la cuenta de Mercado Pago de su asociación.",
     color: "bg-amber-500/10 text-amber-600 dark:bg-amber-500/20 dark:text-amber-400 group-hover:bg-amber-500 group-hover:text-white",
     popular: true,
   },
@@ -61,14 +61,14 @@ const features = [
     icon: Package,
     title: "Modulo Para Alquiler de Articulos",
     description:
-      "Prestamo y devolucion de inventario con seguimiento en tiempo real y alertas de vencimiento.",
+      "Préstamo y devolución de inventario con seguimiento en tiempo real y alertas de vencimiento.",
     color: "bg-teal-500/10 text-teal-600 dark:bg-teal-500/20 dark:text-teal-400 group-hover:bg-teal-500 group-hover:text-white",
   },
   {
     icon: BarChart3,
     title: "Modulo De Analiticas y Balance General",
     description:
-      "Visualizacion de analiticas y balance general de la asociacion. cantidad de socios activos, tasa de morosidad, ingresos totales y por categorias.",
+      "Visualización de analíticas y balance general de la asociación: cantidad de socios activos, tasa de morosidad, ingresos totales y por categorías.",
     color: "bg-indigo-500/10 text-indigo-600 dark:bg-indigo-500/20 dark:text-indigo-400 group-hover:bg-indigo-500 group-hover:text-white",
   },
   {
@@ -82,7 +82,7 @@ const features = [
     icon: Wrench,
     title: "Funcionalidades Personalizadas",
     description:
-      "Solicite cualquier funcionalidad personalizada para su asociación, nosotros analizaremos la viabilidad y la desarrollaremos a medida para usted.",
+      "Solicite cualquier funcionalidad personalizada para su asociación. Nosotros analizaremos la viabilidad y la desarrollaremos a medida para usted.",
     color: "bg-purple-500/10 text-purple-600 dark:bg-purple-500/20 dark:text-purple-400 group-hover:bg-purple-500 group-hover:text-white",
   }
 ]
@@ -175,10 +175,10 @@ export function Features() {
             Modulos del Sistema
           </p>
           <h2 className="mt-2 text-balance text-3xl font-bold tracking-tight sm:text-4xl">
-            Todo lo que su asociacion necesita en un solo lugar
+            Todo lo que su asociación necesita en un solo lugar
           </h2>
           <p className="mt-4 text-pretty text-lg text-muted-foreground">
-            Disenado especificamente para las necesidades unicas de las
+            Diseñado específicamente para las necesidades únicas de las
             asociaciones civiles, con foco en usabilidad y control.
           </p>
         </div>

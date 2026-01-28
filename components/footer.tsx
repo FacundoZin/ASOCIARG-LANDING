@@ -17,7 +17,7 @@ const footerLinks = {
   soporte: [
     { label: "Centro de Ayuda", href: "#" },
     { label: "Estado del Sistema", href: "#" },
-    { label: "Documentacion", href: "#" },
+    { label: "Documentación", href: "#" },
     { label: "Privacidad", href: "#" },
   ],
 }
@@ -31,7 +31,7 @@ export function Footer() {
             <Link href="/" className="relative flex items-center overflow-hidden h-16 w-48 -ml-10">
               <Image
                 src="/logo-asociarg.png"
-                alt="ASOCIARG"
+                alt="logo de ASOCIARG"
                 width={300}
                 height={100}
                 className="h-full w-full object-contain scale-[1.8] transform-gpu"
@@ -39,7 +39,7 @@ export function Footer() {
               />
             </Link>
             <p className="max-w-xs text-sm leading-relaxed text-muted-foreground">
-              Solucion definitiva para la gestion de asociaciones civiles,
+              Solución definitiva para la gestión de asociaciones civiles,
               clubes y organizaciones sin fines de lucro.
             </p>
             <div className="flex gap-4">
@@ -136,7 +136,7 @@ export function Footer() {
               href="#"
               className="text-sm text-muted-foreground transition-colors hover:text-foreground"
             >
-              Terminos
+              Términos
             </Link>
             <Link
               href="#"

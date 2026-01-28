@@ -3,21 +3,21 @@ import Image from "next/image"
 const steps = [
   {
     number: 1,
-    title: "Migracion De Datos",
+    title: "Migración de Datos",
     description:
-      "Importamos su padron actual de socios de forma segura y rapida sin perdida de informacion.",
+      "Importamos su padrón actual de socios de forma segura y rápida sin pérdida de información.",
   },
   {
     number: 2,
-    title: "Configuracion Del Sistema",
+    title: "Configuración del Sistema",
     description:
-      "Te ayudamos a elegir los modulos y las configuraciones necesarias para que el sistema se adapte a su estructura operativa.",
+      "Le ayudamos a elegir los módulos y las configuraciones necesarias para que el sistema se adapte a su estructura operativa.",
   },
   {
     number: 3,
-    title: "Capacitacion y Despliegue",
+    title: "Capacitación y Despliegue",
     description:
-      "Entrenamos a su personal en el uso del sistema para cada una de sus areas.",
+      "Entrenamos a su personal en el uso del sistema para cada una de sus áreas.",
   },
 ]
 
@@ -28,7 +28,7 @@ export function Steps() {
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
           <div className="flex flex-col gap-8">
             <h2 className="text-balance text-3xl font-bold tracking-tight sm:text-4xl">
-              Modernice su institucion en 3 simples pasos
+              Modernice su institución en 3 simples pasos
             </h2>
 
             <div className="flex flex-col gap-8">
@@ -55,7 +55,7 @@ export function Steps() {
             <div className="relative aspect-[4/5] overflow-hidden rounded-2xl border border-white/20 shadow-2xl ring-1 ring-black/5">
               <Image
                 src="/casa-del-jubilado-v3.jpg"
-                alt="Casa del Jubilado"
+                alt="Fachada de la Asociación Civil Casa del Jubilado con mensaje de uno de sus miembros"
                 fill
                 className="object-cover"
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 448px"
