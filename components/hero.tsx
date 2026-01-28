@@ -26,7 +26,7 @@ export function Hero() {
             </div>
 
             <h1 className="text-balance text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
-              Sistema de Gestión Integral para {" "}
+              Sistema de Gestión para {" "}
               <span className="text-primary">Asociaciones Civiles</span>
             </h1>
 
