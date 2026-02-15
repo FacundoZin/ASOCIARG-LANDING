@@ -53,51 +53,86 @@ export function Header() {
       {/* Decorative top line */}
       <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
       
-      <div className="mx-auto flex h-full max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8 transition-all duration-300">
-        <Link href="/" className="group relative flex items-center overflow-hidden h-full w-48 sm:w-64">
-          <Image
-            src="/logo-asociarg.png"
-            alt="ASOCIARG"
-            width={300}
-            height={50}
-            className={cn(
-              "h-full w-full object-contain transform-gpu transition-all duration-300",
-              isScrolled ? "scale-[1.6]" : "scale-[2.0]"
-            )}
-            priority
-          />
-        </Link>
+      <motion.div 
+        initial={{ y: -10, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.4, ease: "easeOut" }}
+        className="mx-auto flex h-full max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8"
+      >
+        <motion.div 
+          initial={{ opacity: 0, x: -10 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.4, delay: 0.1, ease: "easeOut" }}
+          className="h-full flex items-center"
+        >
+          <Link 
+            href="#inicio" 
+            className="group relative flex items-center overflow-hidden h-full w-48 sm:w-64"
+            onClick={(e) => {
+              e.preventDefault();
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
+          >
+            <Image
+              src="/logo-asociarg.png"
+              alt="ASOCIARG"
+              width={300}
+              height={50}
+              className={cn(
+                "h-full w-full object-contain transform-gpu transition-all duration-300",
+                isScrolled ? "scale-[1.6]" : "scale-[2.0]"
+              )}
+              priority
+            />
+          </Link>
+        </motion.div>
 
         <nav className="hidden items-center gap-1 md:flex">
-          {navItems.map((item) => (
-            <Link
+          {navItems.map((item, index) => (
+            <motion.div
               key={item.href}
-              href={item.href}
-              className={cn(
-                "relative px-4 py-2 text-sm font-medium transition-colors hover:text-primary",
-                activeSection === item.href ? "text-primary" : "text-muted-foreground"
-              )}
+              initial={{ opacity: 0, y: -5 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ 
+                duration: 0.3,
+                delay: 0.2 + (index * 0.05),
+                ease: "easeOut"
+              }}
             >
-              {item.label}
-              {activeSection === item.href && (
-                <motion.div
-                  layoutId="activeNav"
-                  className="absolute bottom-0 left-2 right-2 h-0.5 bg-primary rounded-full"
-                  transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                />
-              )}
-            </Link>
+              <Link
+                href={item.href}
+                className={cn(
+                  "relative px-4 py-2 text-sm font-medium transition-all duration-300 hover:-translate-y-0.5 hover:text-primary",
+                  activeSection === item.href ? "text-primary" : "text-muted-foreground"
+                )}
+              >
+                {item.label}
+                {activeSection === item.href && (
+                  <motion.div
+                    layoutId="activeNav"
+                    className="absolute bottom-0 left-2 right-2 h-0.5 bg-primary rounded-full"
+                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                  />
+                )}
+              </Link>
+            </motion.div>
           ))}
         </nav>
 
         <div className="hidden items-center gap-4 md:flex">
-          <Button 
-            asChild 
-            size={isScrolled ? "sm" : "default"} 
-            className="transition-all duration-300 rounded-full font-semibold px-6 hover:scale-105 active:scale-95 shadow-lg shadow-primary/20"
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.4, delay: 0.5, ease: "easeOut" }}
           >
-            <Link href="#contacto">Solicita tu cotización</Link>
-          </Button>
+            <Button 
+              asChild 
+              size={isScrolled ? "sm" : "default"} 
+              className="transition-all duration-300 rounded-full font-semibold px-6 hover:scale-105 active:scale-95 shadow-lg shadow-primary/20"
+            >
+              <Link href="#contacto">Solicita tu cotización</Link>
+            </Button>
+          </motion.div>
         </div>
 
         <button
@@ -112,7 +147,7 @@ export function Header() {
             <Menu className="h-6 w-6" />
           )}
         </button>
-      </div>
+      </motion.div>
 
       {/* Subtle bottom line details */}
       <AnimatePresence>

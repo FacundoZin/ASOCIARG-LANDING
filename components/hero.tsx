@@ -1,3 +1,5 @@
+"use client"
+
 import Link from "next/link"
 import { 
   ArrowRight, 
@@ -14,42 +16,108 @@ import {
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
+import { motion } from "framer-motion"
+
 export function Hero() {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-secondary/50 to-background pt-10 pb-16 sm:pt-14 sm:pb-24 lg:pt-16 lg:pb-32">
+    <section id="inicio" className="relative overflow-hidden bg-gradient-to-b from-secondary/50 to-background pt-10 pb-16 sm:pt-14 sm:pb-24 lg:pt-16 lg:pb-32">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
           <div className="flex flex-col gap-6">
-            <div className="inline-flex w-fit items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="inline-flex w-fit items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary"
+            >
               <RefreshCw className="h-4 w-4" />
               <span>Version 2.0 Enterprise Edition</span>
-            </div>
+            </motion.div>
 
-            <h1 className="text-balance text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
+            <motion.h1 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="text-balance text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl"
+            >
               Sistema de Gestión para {" "}
               <span className="text-primary">Asociaciones Civiles</span>
-            </h1>
+            </motion.h1>
 
-            <div className="flex flex-col gap-4 max-w-xl text-pretty text-lg leading-relaxed text-muted-foreground">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="flex flex-col gap-4 max-w-xl text-pretty text-lg leading-relaxed text-muted-foreground"
+            >
               <p>
                 Socios, cobranzas, pagos online, alquileres, notificaciones automáticas y balances claros, todo esto y mucho más, pensado para asociaciones civiles que quieren ordenar su gestión sin complicarse.
               </p>
-            </div>
+            </motion.div>
 
-            <div className="flex flex-col gap-4 pt-4 sm:flex-row">
-              <Button asChild size="lg" className="gap-2">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="flex flex-col gap-4 pt-4 sm:flex-row"
+            >
+              <Button asChild size="lg" className="group relative gap-2 overflow-hidden transition-all duration-300">
                 <Link href="#contacto">
-                  Solicitar cotización
-                  <ArrowRight className="h-4 w-4" />
+                  <motion.span 
+                    className="relative z-10 flex items-center gap-2"
+                    whileHover={{ x: 3 }}
+                  >
+                    Solicitar cotización
+                    <motion.div
+                      animate={{ x: [0, 5, 0] }}
+                      transition={{ 
+                        repeat: Infinity, 
+                        duration: 1.5, 
+                        ease: "easeInOut" 
+                      }}
+                    >
+                      <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    </motion.div>
+                  </motion.span>
+                  <motion.div 
+                    className="absolute inset-0 z-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity"
+                    initial={false}
+                    whileHover={{ scale: 1.5 }}
+                  />
                 </Link>
               </Button>
-              <Button asChild variant="outline" size="lg">
-                <Link href="#caracteristicas">Ver funcionalidades</Link>
+              
+              <Button 
+                asChild 
+                variant="outline" 
+                size="lg" 
+                className="group relative overflow-hidden border-accent/20 bg-background transition-colors duration-300 hover:border-accent"
+              >
+                <Link href="#caracteristicas">
+                  <motion.span
+                    className="relative z-10 flex items-center justify-center transition-colors duration-300 group-hover:text-white"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    Ver funcionalidades
+                  </motion.span>
+                  <motion.div 
+                    className="absolute inset-0 z-0 bg-accent opacity-0"
+                    initial={false}
+                    whileHover={{ opacity: 1 }}
+                    transition={{ duration: 0.3 }}
+                  />
+                </Link>
               </Button>
-            </div>
+            </motion.div>
           </div>
 
-          <div className="relative">
+          <motion.div 
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="relative"
+          >
             <div className="relative mx-auto w-full max-w-[280px] h-[580px] sm:max-w-4xl sm:h-[450px] lg:max-w-5xl lg:h-[520px] overflow-hidden rounded-[3rem] sm:rounded-2xl border-[8px] border-slate-900 sm:border bg-slate-50 shadow-2xl transition-all duration-300 ring-1 ring-slate-800/50">
               {/* Mobile Hardware Details */}
               <div className="absolute top-0 left-1/2 z-20 h-6 w-24 -translate-x-1/2 rounded-b-2xl bg-slate-900 sm:hidden" />
@@ -132,7 +200,12 @@ export function Hero() {
                       { title: "Notificaciones", desc: "Avisos automáticos por WhatsApp.", icon: RefreshCw, color: "text-rose-500", bg: "bg-rose-50" },
                       { title: "Configuración", desc: "Ajustes generales del sistema.", icon: LayoutDashboard, color: "text-slate-500", bg: "bg-slate-50" },
                     ].map((module, i) => (
-                      <div key={i} className="group relative flex flex-col items-start gap-1.5 sm:gap-2 rounded-xl border border-white bg-white/60 p-2.5 sm:p-3 shadow-sm transition-all hover:bg-white hover:shadow-md">
+                      <motion.div 
+                        key={i} 
+                        whileHover={{ scale: 1.02, backgroundColor: "rgba(255, 255, 255, 1)" }}
+                        whileTap={{ scale: 0.98 }}
+                        className="group relative flex flex-col items-start gap-1.5 sm:gap-2 rounded-xl border border-white bg-white/60 p-2.5 sm:p-3 shadow-sm transition-all hover:shadow-md cursor-pointer"
+                      >
                         <div className={`flex h-8 w-8 items-center justify-center rounded-lg ${module.bg} ${module.color}`}>
                           <module.icon className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
                         </div>
@@ -141,7 +214,7 @@ export function Hero() {
                           <p className="text-[7.5px] sm:text-[8px] text-slate-500 max-w-[120px]">{module.desc}</p>
                         </div>
                         <ChevronRight className="absolute right-3 top-1/2 h-3 w-3 -translate-y-1/2 text-slate-300 transition-colors group-hover:text-slate-500" />
-                      </div>
+                      </motion.div>
                     ))}
                   </div>
 
@@ -160,7 +233,7 @@ export function Hero() {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

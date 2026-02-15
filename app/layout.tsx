@@ -161,6 +161,7 @@ export const viewport: Viewport = {
 }
 
 import WhatsAppButton from "@/components/whatsapp-button"
+import FloatingPDFAssistant from "@/components/floating-pdf-assistant"
 
 export default function RootLayout({
   children,
@@ -179,6 +180,7 @@ export default function RootLayout({
         {children}
         <Analytics />
         <WhatsAppButton />
+        <FloatingPDFAssistant />
       </body>
     </html>
   )
