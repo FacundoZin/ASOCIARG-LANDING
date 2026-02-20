@@ -50,6 +50,17 @@ export function CTA() {
   })
 
   const handleNext = () => {
+    // Basic validation for Step 1
+    if (currentStep === 1) {
+      if (!formData.nombreAsociacion.trim()) {
+        const input = document.getElementById('nombreAsociacion') as HTMLInputElement
+        input?.focus()
+        input?.classList.add('border-red-500', 'animate-shake')
+        setTimeout(() => input?.classList.remove('animate-shake'), 500)
+        return
+      }
+    }
+
     if (currentStep < 3) setCurrentStep(currentStep + 1)
   }
 
@@ -135,6 +146,9 @@ export function CTA() {
 
       <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-8 sm:mb-12">
+          <p className="text-sm font-semibold uppercase tracking-wider text-[#39B54A] mb-2">
+            Solicitar Cotización
+          </p>
           <h2 className="text-2xl font-bold tracking-tight text-white sm:text-3xl text-balance">
             Comience la transformación hoy mismo
           </h2>
@@ -172,7 +186,7 @@ export function CTA() {
                   </div>
                   {/* Label hidden on very small screens to avoid overflow */}
                   <span className={cn(
-                    "absolute top-10 sm:top-12 text-[8px] sm:text-[10px] uppercase font-black tracking-widest whitespace-nowrap hidden xs:block",
+                    "absolute top-10 sm:top-12 text-[8px] sm:text-[10px] uppercase font-black tracking-widest whitespace-nowrap hidden sm:block",
                     currentStep >= step.id ? "text-[#39B54A]" : "text-white/40"
                   )}>
                     {step.name}
@@ -252,12 +266,15 @@ export function CTA() {
                 {currentStep === 2 && (
                   <div className="space-y-4 sm:space-y-6 animate-in fade-in slide-in-from-right-4 duration-500">
                     <h3 className="text-lg sm:text-xl font-bold text-white text-center mb-2 sm:mb-4">Selecciona las Funcionalidades</h3>
-                    <div className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-3">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-3">
                       {functionalities.map((func) => (
-                        <div
+                        <button
                           key={func.id}
+                          type="button"
+                          role="checkbox"
+                          aria-checked={formData.funcionalidades.includes(func.id)}
                           className={cn(
-                            "flex items-center space-x-3 p-2.5 sm:p-3.5 rounded-xl border transition-all cursor-pointer hover:bg-white/15",
+                            "flex items-center text-left space-x-3 p-2.5 sm:p-3.5 rounded-xl border transition-all cursor-pointer hover:bg-white/15 focus:outline-none focus:ring-2 focus:ring-[#39B54A]/50",
                             formData.funcionalidades.includes(func.id)
                               ? "bg-white/20 border-white/40 shadow-lg"
                               : "bg-white/5 border-white/10"
@@ -275,7 +292,7 @@ export function CTA() {
                           <span className="flex-1 font-medium text-white text-xs sm:text-sm leading-tight">
                             {func.label}
                           </span>
-                        </div>
+                        </button>
                       ))}
                     </div>
                   </div>

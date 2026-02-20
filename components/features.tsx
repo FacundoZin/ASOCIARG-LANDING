@@ -1,26 +1,26 @@
 "use client"
 
-import { useState } from "react"
-import { motion, AnimatePresence } from "framer-motion"
+import { Card, CardContent } from "@/components/ui/card"
+import { motion } from "framer-motion"
 import {
-  Users,
-  CalendarDays,
-  Package,
-  Wallet,
-  Bus,
-  CreditCard,
   BarChart3,
-  CircleDollarSign,
-  Wrench,
+  Bus,
+  CalendarDays,
   ChevronDown,
   ChevronUp,
+  CircleDollarSign,
+  CreditCard,
+  Package,
+  Users,
+  Wallet,
+  Wrench,
 } from "lucide-react"
-import { Card, CardContent } from "@/components/ui/card"
+import { useState } from "react"
 
 const features = [
   {
     icon: Users,
-    title: "Modulo Para Gestion de Socios",
+    title: "Módulo de Gestión de Socios",
     description:
       "Administración completa del padrón de socios, con historial detallado de pagos. Podrá cargar, editar y eliminar socios desde un solo lugar.",
     color: "bg-blue-500/10 text-blue-600 dark:bg-blue-500/20 dark:text-blue-400 group-hover:bg-blue-500 group-hover:text-white",
@@ -28,23 +28,23 @@ const features = [
   },
   {
     icon: CalendarDays,
-    title: "Modulo Para Gestion de Reservas",
+    title: "Módulo de Gestión de Reservas",
     description:
-      "Registre reservas, pagos y señas de sus salones, visualize las fechas reservadas en un calendario inteligente, seguimiento completo y organizado de sus reservas.",
+      "Registre reservas, pagos y señas de sus salones, visualice las fechas reservadas en un calendario inteligente, seguimiento completo y organizado de sus reservas.",
     color: "bg-cyan-500/10 text-cyan-600 dark:bg-cyan-500/20 dark:text-cyan-400 group-hover:bg-cyan-500 group-hover:text-white",
     popular: true,
   },
   {
     icon: Wallet,
-    title: "Modulo Para Cobradores",
+    title: "Módulo para Cobradores",
     description:
-      "Organize a sus cobradores asignandole lotes y zonas geograficas, mantenga un historial de todos los pagos recibidos de cada uno de ellos para auditorias internas.",
+      "Organice a sus cobradores asignándole lotes y zonas geográficas, mantenga un historial de todos los pagos recibidos de cada uno de ellos para auditorías internas.",
     color: "bg-emerald-500/10 text-emerald-600 dark:bg-emerald-500/20 dark:text-emerald-400 group-hover:bg-emerald-500 group-hover:text-white",
     popular: true,
   },
   {
     icon: Bus,
-    title: "Modulo Para Organizacion de Viajes",
+    title: "Módulo de Organización de Viajes",
     description:
       "Organización integral de excursiones, turismo y eventos especiales para los asociados.",
     color: "bg-green-500/10 text-green-600 dark:bg-green-500/20 dark:text-green-400 group-hover:bg-green-500 group-hover:text-white",
@@ -59,23 +59,23 @@ const features = [
   },
   {
     icon: Package,
-    title: "Modulo Para Alquiler de Articulos",
+    title: "Módulo de Alquiler de Artículos",
     description:
       "Préstamo y devolución de inventario con seguimiento en tiempo real y alertas de vencimiento.",
     color: "bg-teal-500/10 text-teal-600 dark:bg-teal-500/20 dark:text-teal-400 group-hover:bg-teal-500 group-hover:text-white",
   },
   {
     icon: BarChart3,
-    title: "Modulo De Analiticas y Balance General",
+    title: "Módulo de Analíticas y Balance General",
     description:
       "Visualización de analíticas y balance general de la asociación: cantidad de socios activos, tasa de morosidad, ingresos totales y por categorías.",
     color: "bg-indigo-500/10 text-indigo-600 dark:bg-indigo-500/20 dark:text-indigo-400 group-hover:bg-indigo-500 group-hover:text-white",
   },
   {
     icon: CircleDollarSign,
-    title: "Modulo De Pagos",
+    title: "Módulo de Pagos",
     description:
-      "Registre pagos de sus socios directamente en su establecimiento, actualize el valor de la cuota, rapido y simple.",
+      "Registre pagos de sus socios directamente en su establecimiento, actualice el valor de la cuota, rápido y simple.",
     color: "bg-rose-500/10 text-rose-600 dark:bg-rose-500/20 dark:text-rose-400 group-hover:bg-rose-500 group-hover:text-white",
   },
   {
@@ -93,7 +93,7 @@ function FeatureCard({ feature }: { feature: typeof features[0] }) {
   return (
     <motion.div
       layout
-      transition={{ 
+      transition={{
         layout: { duration: 0.4, type: "spring", stiffness: 200, damping: 25 }
       }}
       className="w-full sm:w-[calc(50.3%-1rem)] lg:w-[calc(33.333%-1rem)]"
@@ -121,15 +121,15 @@ function FeatureCard({ feature }: { feature: typeof features[0] }) {
           >
             <feature.icon className="h-5 w-5" />
           </motion.div>
-          
+
           <div className="flex flex-col gap-1.5 flex-1 min-w-0">
-            <motion.h3 
+            <motion.h3
               layout="position"
               className="text-base font-bold leading-tight min-h-[2.5rem] flex items-center"
             >
               {feature.title}
             </motion.h3>
-            
+
             <div className="relative">
               <motion.div
                 layout
@@ -170,9 +170,15 @@ export function Features() {
   return (
     <section id="caracteristicas" className="py-16 sm:py-24 bg-muted/30 border-y border-border/50">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-2xl text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mx-auto max-w-2xl text-center"
+        >
           <p className="text-sm font-semibold uppercase tracking-wider text-primary">
-            Modulos del Sistema
+            Módulos del Sistema
           </p>
           <h2 className="mt-2 text-balance text-3xl font-bold tracking-tight sm:text-4xl">
             Todo lo que su asociación necesita en un solo lugar
@@ -181,13 +187,27 @@ export function Features() {
             Diseñado específicamente para las necesidades únicas de las
             asociaciones civiles, con foco en usabilidad y control.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="mt-16 flex flex-wrap justify-center gap-4 items-start">
-          {features.map((feature) => (
+        <motion.div
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-50px" }}
+          variants={{
+            hidden: { opacity: 0 },
+            show: {
+              opacity: 1,
+              transition: {
+                staggerChildren: 0.1
+              }
+            }
+          }}
+          className="mt-16 flex flex-wrap justify-center gap-4 items-start"
+        >
+          {features.map((feature, index) => (
             <FeatureCard key={feature.title} feature={feature} />
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   )

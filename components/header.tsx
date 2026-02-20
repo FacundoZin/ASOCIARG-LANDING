@@ -1,12 +1,12 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
+import { AnimatePresence, motion } from "framer-motion";
+import { Menu, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { Menu, X } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { motion, AnimatePresence } from "framer-motion";
-import { cn } from "@/lib/utils";
+import { useEffect, useState } from "react";
 
 const navItems = [
   { label: "Características", href: "#caracteristicas" },
@@ -20,21 +20,42 @@ export function Header() {
   const [activeSection, setActiveSection] = useState("");
   const [isScrolled, setIsScrolled] = useState(false);
 
+  // Bloquear scroll del body cuando el menú está abierto
   useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [mobileMenuOpen]);
+
+  useEffect(() => {
+    let ticking = false;
+
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-      
-      // Basic active section detection
-      const sections = navItems.map(item => item.href.substring(1));
-      const current = sections.find(section => {
-        const el = document.getElementById(section);
-        if (el) {
-          const rect = el.getBoundingClientRect();
-          return rect.top <= 100 && rect.bottom >= 100;
-        }
-        return false;
-      });
-      if (current) setActiveSection(`#${current}`);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setIsScrolled(window.scrollY > 20);
+
+          // Basic active section detection
+          const sections = navItems.map(item => item.href.substring(1));
+          const current = sections.find(section => {
+            const el = document.getElementById(section);
+            if (el) {
+              const rect = el.getBoundingClientRect();
+              return rect.top <= 100 && rect.bottom >= 100;
+            }
+            return false;
+          });
+          if (current) setActiveSection(`#${current}`);
+
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -42,31 +63,31 @@ export function Header() {
   }, []);
 
   return (
-    <header 
+    <header
       className={cn(
         "sticky top-0 z-50 w-full transition-all duration-300",
-        isScrolled 
-          ? "border-b border-border/40 bg-background/80 backdrop-blur-md shadow-sm h-16" 
+        isScrolled
+          ? "border-b border-border/40 bg-background/80 backdrop-blur-md shadow-sm h-16"
           : "border-b border-transparent bg-background/0 h-20"
       )}
     >
       {/* Decorative top line */}
       <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
-      
-      <motion.div 
+
+      <motion.div
         initial={{ y: -10, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.4, ease: "easeOut" }}
         className="mx-auto flex h-full max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8"
       >
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, x: -10 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.4, delay: 0.1, ease: "easeOut" }}
           className="h-full flex items-center"
         >
-          <Link 
-            href="#inicio" 
+          <Link
+            href="#inicio"
             className="group relative flex items-center overflow-hidden h-full w-48 sm:w-64"
             onClick={(e) => {
               e.preventDefault();
@@ -93,7 +114,7 @@ export function Header() {
               key={item.href}
               initial={{ opacity: 0, y: -5 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ 
+              transition={{
                 duration: 0.3,
                 delay: 0.2 + (index * 0.05),
                 ease: "easeOut"
@@ -125,9 +146,9 @@ export function Header() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.4, delay: 0.5, ease: "easeOut" }}
           >
-            <Button 
-              asChild 
-              size={isScrolled ? "sm" : "default"} 
+            <Button
+              asChild
+              size={isScrolled ? "sm" : "default"}
               className="transition-all duration-300 rounded-full font-semibold px-6 hover:scale-105 active:scale-95 shadow-lg shadow-primary/20"
             >
               <Link href="#contacto">Solicita tu cotización</Link>
@@ -152,7 +173,7 @@ export function Header() {
       {/* Subtle bottom line details */}
       <AnimatePresence>
         {isScrolled && (
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, scaleX: 0 }}
             animate={{ opacity: 1, scaleX: 1 }}
             exit={{ opacity: 0, scaleX: 0 }}
@@ -173,7 +194,7 @@ export function Header() {
               onClick={() => setMobileMenuOpen(false)}
               className="fixed inset-0 z-[60] bg-background/80 backdrop-blur-sm md:hidden"
             />
-            
+
             {/* Panel lateral del menú */}
             <motion.div
               initial={{ x: "100%" }}

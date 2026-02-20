@@ -1,9 +1,9 @@
 "use client"
 
-import { useState, useEffect } from "react"
-import { motion, AnimatePresence } from "framer-motion"
-import { Download, X, FileText, ChevronRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { AnimatePresence, motion } from "framer-motion"
+import { ChevronRight, Download, FileText, X } from "lucide-react"
+import { useEffect, useState } from "react"
 
 export default function FloatingPDFAssistant() {
   const [isVisible, setIsVisible] = useState(false)
@@ -12,12 +12,12 @@ export default function FloatingPDFAssistant() {
   const [hasNewNotification, setHasNewNotification] = useState(true)
 
   useEffect(() => {
-    // Show the side tab after 2 seconds
+    // Show the side tab after 8 seconds
     const timer = setTimeout(() => {
       setIsVisible(true)
-      // Auto-expand the first time to show what it is
-      setTimeout(() => setIsExpanded(true), 3000)
-    }, 2000)
+      // Auto-expand after 15 seconds total (8s + 7s)
+      setTimeout(() => setIsExpanded(true), 7000)
+    }, 8000)
 
     return () => clearTimeout(timer)
   }, [])
@@ -57,7 +57,7 @@ export default function FloatingPDFAssistant() {
               <span className="[writing-mode:vertical-lr] rotate-180 text-[10px] font-bold uppercase tracking-widest text-[#16a34a]/60">
                 Info PDF
               </span>
-              
+
               {/* Notification Badge */}
               {hasNewNotification && (
                 <span className="absolute -top-1 -right-1 flex h-3 w-3">
@@ -81,7 +81,7 @@ export default function FloatingPDFAssistant() {
             className="fixed left-0 bottom-4 sm:bottom-6 z-[65] w-[280px] sm:w-[300px] rounded-r-3xl border border-l-0 border-[#16a34a]/10 bg-white/60 p-6 shadow-2xl backdrop-blur-xl ring-1 ring-black/5 overflow-hidden"
           >
             {/* Auto-close Progress Bar */}
-            <motion.div 
+            <motion.div
               initial={{ width: "100%" }}
               animate={{ width: "0%" }}
               transition={{ duration: 6, ease: "linear" }}
@@ -89,7 +89,7 @@ export default function FloatingPDFAssistant() {
             />
 
             {/* Close/Minimize button */}
-            <button 
+            <button
               onClick={() => {
                 setIsExpanded(false)
                 setHasNewNotification(false)
@@ -110,7 +110,7 @@ export default function FloatingPDFAssistant() {
                   <p className="text-[10px] text-[#16a34a] font-semibold uppercase tracking-wider mt-1.5">Descubrí ASOCIARG</p>
                 </div>
               </div>
-              
+
               <div className="space-y-2">
                 <p className="text-sm text-slate-600/90 leading-relaxed font-medium text-pretty">
                   ¿Querés potenciar tu asociación? Descubrí todos los beneficios y funciones exclusivas de ASOCIARG en nuestro dossier.
@@ -121,7 +121,7 @@ export default function FloatingPDFAssistant() {
                 </div>
               </div>
 
-              <Button 
+              <Button
                 asChild
                 className="w-full gap-2 shadow-lg shadow-[#16a34a]/20 transition-all group h-11 bg-[#16a34a] hover:bg-[#15803d] text-white border-0"
               >

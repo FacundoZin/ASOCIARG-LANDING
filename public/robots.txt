@@ -1,5 +1,5 @@
 # Robots.txt para ASOCIARG
-# https://asociarg-landing.vercel.app
+# https://asociarg.com
 
 User-agent: *
 Allow: /

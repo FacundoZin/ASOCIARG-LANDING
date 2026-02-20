@@ -1,7 +1,9 @@
 "use client"
 
-import { Check, Lock, Calendar, Clock, CreditCard, ShieldCheck } from "lucide-react"
 import { Card, CardContent } from "@/components/ui/card"
+import { motion } from "framer-motion"
+import { Calendar, Check, Clock, CreditCard, Lock, ShieldCheck } from "lucide-react"
+import Image from "next/image"
 
 const integrations = [
   {
@@ -28,7 +30,13 @@ export function Integrations() {
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
-          <div className="flex flex-col gap-8">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="flex flex-col gap-8"
+          >
             <div>
               <p className="text-sm font-semibold uppercase tracking-wider text-primary">
                 Conectividad Total
@@ -37,22 +45,30 @@ export function Integrations() {
                 Integraciones que potencian su gestión
               </h2>
               <p className="mt-4 text-pretty text-lg text-muted-foreground">
-                Olvídese del trabajo manual. Nuestro sistema se conecta con plataformas externas 
+                Olvídese del trabajo manual. Nuestro sistema se conecta con plataformas externas
                 para automatizar cobros y comunicaciones con sus socios.
               </p>
             </div>
 
             <div className="flex flex-col gap-6">
-              {integrations.map((integration) => (
-                <div key={integration.title} className="flex gap-4 items-start">
+              {integrations.map((integration, index) => (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: index * 0.2 }}
+                  key={integration.title}
+                  className="flex gap-4 items-start"
+                >
                   <div
                     className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-xl p-2 ${integration.color}`}
                   >
-                    <img 
-                      src={integration.icon} 
-                      alt={`Icono de ${integration.title} - integración con ASOCIARG`} 
+                    <Image
+                      src={integration.icon}
+                      alt={`Icono de ${integration.title} - integración con ASOCIARG`}
+                      width={56}
+                      height={56}
                       className="h-full w-full object-contain"
-                      loading="lazy"
                     />
                   </div>
                   <div>
@@ -61,14 +77,20 @@ export function Integrations() {
                       {integration.description}
                     </p>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
-          </div>
+          </motion.div>
 
-          <div className="relative">
+          <motion.div
+            initial={{ opacity: 0, x: 30, scale: 0.95 }}
+            whileInView={{ opacity: 1, x: 0, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="relative"
+          >
             <div className="absolute -inset-4 rounded-[2rem] bg-gradient-to-tr from-blue-500/10 to-green-500/10 blur-2xl" />
-            
+
             {/* Payment Portal Simulation */}
             <Card className="relative mx-auto max-w-xl overflow-hidden shadow-2xl border-slate-200 dark:border-slate-800 bg-[#F5F7FA]">
               <CardContent className="p-0">
@@ -152,12 +174,17 @@ export function Integrations() {
                         <div className="flex items-center justify-between px-4 py-3 hover:bg-slate-50 transition-colors cursor-pointer group">
                           <div className="flex items-center gap-4">
                             <div className="h-4 w-4 rounded-full border-2 border-slate-200 group-hover:border-blue-500 bg-white" />
-                            <div className="h-9 w-9 bg-[#FFDB00] rounded-full flex items-center justify-center overflow-hidden border border-slate-100">
-                               <img src="/MP_RGB_HANDSHAKE_color_vertical.svg" className="scale-110 h-6" alt="Logo de Mercado Pago - medio de pago integrado para cobrar cuotas online" loading="lazy" />
+                            <div className="h-9 w-9 bg-[#FFDB00] rounded-full flex items-center justify-center overflow-hidden border border-slate-100 relative">
+                              <Image
+                                src="/MP_RGB_HANDSHAKE_color_vertical.svg"
+                                fill
+                                className="scale-110 object-contain p-1"
+                                alt="Logo de Mercado Pago - medio de pago integrado para cobrar cuotas online"
+                              />
                             </div>
                             <div>
-                               <p className="text-sm font-bold text-slate-700 leading-none">Mercado Pago</p>
-                               <p className="text-[9px] text-slate-500 mt-1">Tus medios de pago preferidos</p>
+                              <p className="text-sm font-bold text-slate-700 leading-none">Mercado Pago</p>
+                              <p className="text-[9px] text-slate-500 mt-1">Tus medios de pago preferidos</p>
                             </div>
                           </div>
                         </div>
@@ -165,7 +192,7 @@ export function Integrations() {
                           <div className="flex items-center gap-4">
                             <div className="h-4 w-4 rounded-full border-2 border-slate-200 bg-white" />
                             <div className="h-9 w-9 bg-white border border-slate-200 rounded-full flex items-center justify-center">
-                               <CreditCard className="h-4 w-4 text-slate-400" />
+                              <CreditCard className="h-4 w-4 text-slate-400" />
                             </div>
                             <p className="text-sm font-bold text-slate-700">Tarjeta de débito</p>
                           </div>
@@ -177,35 +204,32 @@ export function Integrations() {
 
                 {/* Sticky CTA */}
                 <div className="p-4 bg-white border-t mt-auto">
-                   <div className="flex flex-col sm:flex-row gap-3 items-center">
-                     <button className="flex-1 w-full bg-[#3B82F6] hover:bg-[#2563EB] text-white py-3 rounded-xl font-bold flex items-center justify-center gap-2 shadow-lg shadow-blue-200 transition-all active:scale-[0.98]">
-                        <Lock className="h-4 w-4" />
-                        Pagar ahora
-                     </button>
-                     
-                     <div className="flex-1 w-full flex items-center gap-3 justify-center px-4 py-2.5 bg-green-50 border border-green-100 rounded-xl">
-                        <div className="relative shrink-0">
-                          <img src="/whatsapp-3.svg" className="h-4 w-4" alt="Icono de WhatsApp - envío automático de comprobantes de pago" loading="lazy" />
-                          <div className="absolute -top-1 -right-1 h-2 w-2 bg-green-500 rounded-full animate-ping" />
-                        </div>
-                        <span className="text-[10px] font-semibold text-green-700 leading-tight">Comprobante por WhatsApp</span>
-                     </div>
-                   </div>
+                  <div className="flex flex-col sm:flex-row gap-3 items-center">
+                    <button className="flex-1 w-full bg-[#3B82F6] hover:bg-[#2563EB] text-white py-3 rounded-xl font-bold flex items-center justify-center gap-2 shadow-lg shadow-blue-200 transition-all active:scale-[0.98]">
+                      <Lock className="h-4 w-4" />
+                      Pagar ahora
+                    </button>
+
+                    <div className="flex-1 w-full flex items-center gap-3 justify-center px-4 py-2.5 bg-green-50 border border-green-100 rounded-xl">
+                      <div className="relative shrink-0">
+                        <Image
+                          src="/whatsapp-3.svg"
+                          width={16}
+                          height={16}
+                          className="h-4 w-4"
+                          alt="Icono de WhatsApp - envío automático de comprobantes de pago"
+                        />
+                        <div className="absolute -top-1 -right-1 h-2 w-2 bg-green-500 rounded-full animate-ping" />
+                      </div>
+                      <span className="text-[10px] font-semibold text-green-700 leading-tight">Comprobante por WhatsApp</span>
+                    </div>
+                  </div>
                 </div>
               </CardContent>
             </Card>
-          </div>
+          </motion.div>
         </div>
       </div>
-      <style jsx global>{`
-        .scrollbar-hide::-webkit-scrollbar {
-          display: none;
-        }
-        .scrollbar-hide {
-          -ms-overflow-style: none; /* IE and Edge */
-          scrollbar-width: none; /* Firefox */
-        }
-      `}</style>
     </section>
   )
 }
