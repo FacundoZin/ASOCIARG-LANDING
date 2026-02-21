@@ -91,13 +91,35 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t pt-8 sm:flex-row">
+        <div className="mt-12 flex flex-col items-center justify-between gap-6 border-t pt-8 sm:flex-row">
           <p className="text-sm text-muted-foreground">
-            © 2026 ASOCIARG by Syntrax Software. Todos los derechos reservados.
+            © 2026 ASOCIARG. Todos los derechos reservados.
           </p>
-          <p className="text-xs text-muted-foreground font-medium uppercase tracking-tighter">
-            Enterprise Edition
-          </p>
+          
+          <div className="flex flex-col items-center gap-3 sm:flex-row sm:gap-6">
+            <div className="flex items-center gap-0">
+              <span className="text-xs font-medium text-muted-foreground/60 uppercase tracking-wider">
+                Desarrollado por
+              </span>
+              <Link 
+                href="https://www.syntrax.software" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="relative flex h-6 w-20 items-center overflow-hidden transition-all hover:scale-110 active:scale-95 -ml-3"
+              >
+                <Image
+                  src="/LogoSyntrax.png"
+                  alt="Syntrax Software"
+                  fill
+                  className="object-contain scale-[2.2] transform-gpu dark:invert opacity-80 hover:opacity-100 transition-all"
+                />
+              </Link>
+            </div>
+            <div className="hidden h-4 w-px bg-border sm:block" />
+            <p className="text-xs text-muted-foreground font-medium uppercase tracking-tighter">
+              Enterprise Edition
+            </p>
+          </div>
         </div>
       </div>
     </footer>
