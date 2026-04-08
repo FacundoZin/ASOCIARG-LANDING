@@ -10,6 +10,7 @@ import { useEffect, useState } from "react";
 
 const navItems = [
   { label: "Características", href: "#caracteristicas" },
+  { label: "Planes", href: "#planes" },
   { label: "Integraciones", href: "#integraciones" },
   { label: "Soluciones", href: "#soluciones" },
   { label: "Contacto", href: "#contacto" },
