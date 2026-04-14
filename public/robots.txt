@@ -1,11 +1,11 @@
 # Robots.txt para ASOCIARG
-# https://asociarg.com
+# https://asociarg.cloud
 
 User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://asociarg.com/sitemap.xml
+Sitemap: https://asociarg.cloud/sitemap.xml
 
 # Bloquear rutas internas de Next.js
 Disallow: /_next/

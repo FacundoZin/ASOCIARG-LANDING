@@ -16,12 +16,12 @@ const jsonLd = {
   "@graph": [
     {
       "@type": "Organization",
-      "@id": "https://asociarg.com/#organization",
+      "@id": "https://asociarg.cloud/#organization",
       name: "ASOCIARG",
-      url: "https://asociarg.com",
+      url: "https://asociarg.cloud",
       logo: {
         "@type": "ImageObject",
-        url: "https://asociarg.com/logo-asociarg.png",
+        url: "https://asociarg.cloud/logo-asociarg.png",
         width: 300,
         height: 100,
       },
@@ -36,7 +36,7 @@ const jsonLd = {
     },
     {
       "@type": "SoftwareApplication",
-      "@id": "https://asociarg.com/#software",
+      "@id": "https://asociarg.cloud/#software",
       name: "ASOCIARG",
       applicationCategory: "BusinessApplication",
       operatingSystem: "Web",
@@ -48,7 +48,7 @@ const jsonLd = {
         priceCurrency: "ARS",
       },
       provider: {
-        "@id": "https://asociarg.com/#organization",
+        "@id": "https://asociarg.cloud/#organization",
       },
       featureList: [
         "Gestión de socios",
@@ -62,12 +62,12 @@ const jsonLd = {
     },
     {
       "@type": "WebSite",
-      "@id": "https://asociarg.com/#website",
-      url: "https://asociarg.com",
+      "@id": "https://asociarg.cloud/#website",
+      url: "https://asociarg.cloud",
       name: "ASOCIARG",
       description: "Software de gestión para asociaciones civiles",
       publisher: {
-        "@id": "https://asociarg.com/#organization",
+        "@id": "https://asociarg.cloud/#organization",
       },
       inLanguage: "es-AR",
     },
@@ -100,14 +100,14 @@ export const metadata: Metadata = {
   authors: [{ name: "ASOCIARG" }],
   creator: "ASOCIARG",
   publisher: "ASOCIARG",
-  metadataBase: new URL("https://asociarg.com"),
+  metadataBase: new URL("https://asociarg.cloud"),
   alternates: {
     canonical: "/",
   },
   openGraph: {
     type: "website",
     locale: "es_AR",
-    url: "https://asociarg.com",
+    url: "https://asociarg.cloud",
     siteName: "ASOCIARG",
     title: "ASOCIARG - Sistema de Gestión para Asociaciones Civiles",
     description:

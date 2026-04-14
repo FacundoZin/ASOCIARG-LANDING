@@ -1,7 +1,7 @@
 import { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://asociarg.com";
+  const baseUrl = "https://asociarg.cloud";
 
   return [
     {
