@@ -69,8 +69,13 @@ const cardVariants = {
 
 export function Pricing() {
   return (
-    <section id="planes" className="py-16 sm:py-24 bg-background">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section id="planes" className="relative py-16 sm:py-24 bg-background overflow-hidden">
+      {/* Fondo animado suave */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <div className="absolute top-0 right-1/4 w-[40rem] h-[40rem] rounded-full bg-primary/5 blur-[100px] animate-pulse [animation-duration:8s]" />
+        <div className="absolute bottom-0 left-1/4 w-[30rem] h-[30rem] rounded-full bg-accent/5 blur-[100px] animate-pulse [animation-duration:12s]" />
+      </div>
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Encabezado */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -102,7 +107,7 @@ export function Pricing() {
               transition: { staggerChildren: 0.15 },
             },
           }}
-          className="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 items-start"
+          className="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 items-start group/cards"
         >
           {plans.map((plan) => {
             const Icon = plan.icon
@@ -111,24 +116,38 @@ export function Pricing() {
             return (
               <motion.div
                 key={plan.name}
-                variants={cardVariants}
-                transition={{ duration: 0.5, ease: "easeOut" }}
+                variants={{
+                  hidden: { opacity: 0, y: 30, scale: 0.98 },
+                  show: { 
+                    opacity: 1, 
+                    y: 0, 
+                    scale: isHighlighted ? [0.98, 1.04, 1.02] : 1,
+                    transition: { duration: 0.6, ease: [0.4, 0, 0.2, 1] }
+                  }
+                }}
                 className={`
-                  relative flex flex-col rounded-2xl border p-6 transition-all duration-300
+                  relative flex flex-col rounded-2xl border p-6 transition-all duration-[400ms] ease-[cubic-bezier(0.4,0,0.2,1)]
+                  origin-center
+                  sm:group-hover/cards:opacity-80 sm:group-hover/cards:blur-[2px] sm:group-hover/cards:scale-[0.98]
+                  sm:hover:!opacity-100 sm:hover:!blur-none sm:hover:-translate-y-2 sm:hover:!scale-[1.03]
                   ${isHighlighted
-                    ? "border-primary bg-primary text-primary-foreground shadow-2xl shadow-primary/20 scale-[1.03] lg:scale-105"
-                    : "border-border/50 bg-card text-card-foreground hover:shadow-lg hover:border-border"
+                    ? "border-primary bg-primary text-primary-foreground shadow-2xl shadow-primary/20 sm:hover:shadow-primary/40"
+                    : "border-border/50 bg-card text-card-foreground sm:hover:shadow-xl sm:hover:border-primary/40"
                   }
                 `}
               >
                 {/* Badge */}
                 {plan.badge && (
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+                  <motion.div 
+                    animate={{ y: [0, -4, 0] }}
+                    transition={{ repeat: Infinity, duration: 2.5, ease: "easeInOut" }}
+                    className="absolute -top-3 left-1/2 -translate-x-1/2 z-10"
+                  >
                     <span className="inline-flex items-center gap-1.5 rounded-full bg-accent px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-accent-foreground shadow-md">
                       <Star className="h-3 w-3 fill-current" />
                       {plan.badge}
                     </span>
-                  </div>
+                  </motion.div>
                 )}
 
                 {/* Header */}
@@ -153,12 +172,12 @@ export function Pricing() {
                 </div>
 
                 {/* Precio */}
-                <div className={`mb-5 pt-4 border-t ${isHighlighted ? "border-primary-foreground/20" : "border-border/50"}`}>
+                <div className={`group/price mb-5 pt-4 border-t transition-colors duration-300 ${isHighlighted ? "border-primary-foreground/20" : "border-border/50"}`}>
                   {"pricing" in plan && plan.pricing ? (
                     <div className="space-y-1.5">
                       {plan.pricing.map((tier) => (
-                        <div key={tier.label} className="flex items-center justify-between gap-2">
-                          <span className={`text-[13px] ${isHighlighted ? "text-primary-foreground/80" : "text-muted-foreground"}`}>
+                        <div key={tier.label} className="flex items-center justify-between gap-2 sm:group-hover/price:scale-[1.02] transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] origin-left">
+                          <span className={`text-[13px] transition-colors duration-300 ${isHighlighted ? "text-primary-foreground/80 sm:group-hover/price:text-primary-foreground" : "text-muted-foreground sm:group-hover/price:text-foreground"}`}>
                             {tier.label}
                           </span>
                           <span className="text-base font-bold tabular-nums">{tier.price}</span>
@@ -169,11 +188,11 @@ export function Pricing() {
                       </p>
                     </div>
                   ) : (
-                    <div className="flex items-baseline gap-1">
+                    <div className="flex items-baseline gap-1 sm:group-hover/price:scale-[1.02] transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] origin-left">
                       <span className="text-4xl font-extrabold tracking-tight">
                         {"pricingFixed" in plan ? plan.pricingFixed : ""}
                       </span>
-                      <span className={`text-sm font-medium ${isHighlighted ? "text-primary-foreground/70" : "text-muted-foreground"}`}>
+                      <span className={`text-sm font-medium transition-colors duration-300 ${isHighlighted ? "text-primary-foreground/70 sm:group-hover/price:text-primary-foreground" : "text-muted-foreground sm:group-hover/price:text-foreground"}`}>
                         {plan.pricingSuffix}
                       </span>
                     </div>
@@ -182,11 +201,21 @@ export function Pricing() {
 
                 {/* Features */}
                 <ul className="flex-1 space-y-2.5 mb-6">
-                  {plan.features.map((feature) => (
-                    <li key={feature} className="flex items-start gap-2.5">
+                  {plan.features.map((feature, i) => (
+                    <motion.li 
+                      key={feature}
+                      initial="hidden"
+                      whileInView="show"
+                      viewport={{ once: true }}
+                      variants={{
+                        hidden: { opacity: 0, x: -25 },
+                        show: { opacity: 1, x: 0, transition: { duration: 0.5, ease: [0.4, 0, 0.2, 1], delay: 0.4 + (i * 0.08) } }
+                      }}
+                      className="flex items-start gap-2.5 cursor-default transition-transform duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] sm:hover:translate-x-1"
+                    >
                       <span
                         className={`
-                          mt-0.5 shrink-0 flex h-4 w-4 items-center justify-center rounded-full
+                          mt-0.5 shrink-0 flex h-4 w-4 items-center justify-center rounded-full transition-transform duration-300 sm:hover:scale-110
                           ${isHighlighted
                             ? "bg-primary-foreground/20 text-primary-foreground"
                             : "bg-primary/10 text-primary"
@@ -198,41 +227,37 @@ export function Pricing() {
                       <span className={`text-sm leading-snug ${isHighlighted ? "text-primary-foreground/90" : "text-foreground/80"}`}>
                         {feature}
                       </span>
-                    </li>
+                    </motion.li>
                   ))}
                 </ul>
 
                 {/* CTA */}
-                <a
+                <motion.a
                   href="#contacto"
                   className={`
-                    block w-full rounded-xl px-4 py-3 text-center text-sm font-bold transition-all duration-200
+                    relative overflow-hidden block w-full rounded-xl px-4 py-3 text-center text-sm font-bold transition-all duration-[400ms] ease-[cubic-bezier(0.4,0,0.2,1)]
+                    sm:active:scale-[0.98] sm:hover:scale-[1.02]
                     ${isHighlighted
-                      ? "bg-primary-foreground text-primary hover:bg-primary-foreground/90 shadow-md"
-                      : "bg-primary/10 text-primary hover:bg-primary hover:text-primary-foreground border border-primary/20"
+                      ? "bg-primary-foreground text-primary shadow-md sm:hover:bg-white sm:hover:shadow-xl"
+                      : "bg-primary/10 text-primary border border-primary/20 sm:hover:bg-primary sm:hover:text-primary-foreground"
                     }
                   `}
                 >
-                  {plan.cta}
-                </a>
+                  <span className="relative z-10">{plan.cta}</span>
+                  <motion.div 
+                    initial={{ x: "-100%" }}
+                    whileInView={{ x: "200%" }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 1.2, ease: [0.4, 0, 0.2, 1], delay: 0.8 }}
+                    className="absolute inset-0 z-0 bg-gradient-to-r from-transparent via-white/40 to-transparent skew-x-12 w-full"
+                  />
+                </motion.a>
               </motion.div>
             )
           })}
         </motion.div>
 
-        {/* Nota al pie */}
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-10 text-center text-sm text-muted-foreground"
-        >
-          Los precios son en pesos argentinos e incluyen IVA. ¿Tenés una necesidad especial?{" "}
-          <a href="#contacto" className="text-primary font-semibold hover:underline">
-            Hablemos.
-          </a>
-        </motion.p>
+
       </div>
     </section>
   )

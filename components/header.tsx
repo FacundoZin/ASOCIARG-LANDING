@@ -152,7 +152,7 @@ export function Header() {
               size={isScrolled ? "sm" : "default"}
               className="transition-all duration-300 rounded-full font-semibold px-6 hover:scale-105 active:scale-95 shadow-lg shadow-primary/20"
             >
-              <Link href="#contacto">Solicita tu cotización</Link>
+              <Link href="#contacto">Solicita tu demo gratuita</Link>
             </Button>
           </motion.div>
         </div>
@@ -237,7 +237,7 @@ export function Header() {
                 <div className="mt-auto pt-6 border-t">
                   <Button asChild className="w-full py-6 text-lg rounded-xl font-bold shadow-lg shadow-primary/10">
                     <Link href="#contacto" onClick={() => setMobileMenuOpen(false)}>
-                      Solicita tu cotización
+                      Solicita tu demo gratuita
                     </Link>
                   </Button>
                 </div>

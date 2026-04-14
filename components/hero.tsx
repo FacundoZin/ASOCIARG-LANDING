@@ -64,7 +64,7 @@ export function Hero() {
               <Button asChild size="lg" className="group relative gap-2 overflow-hidden transition-all duration-300">
                 <Link href="#contacto">
                   <span className="relative z-10 flex items-center gap-2">
-                    Solicitar cotización
+                    Solicita tu demo gratuita
                     <motion.div
                       animate={{ x: [0, 5, 0] }}
                       transition={{

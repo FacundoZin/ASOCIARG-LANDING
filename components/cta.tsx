@@ -147,7 +147,7 @@ export function CTA() {
       <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-8 sm:mb-12">
           <p className="text-sm font-semibold uppercase tracking-wider text-[#39B54A] mb-2">
-            Solicitar Cotización
+            Solicita Tu Demo Gratuita
           </p>
           <h2 className="text-2xl font-bold tracking-tight text-white sm:text-3xl text-balance">
             Comience la transformación hoy mismo
